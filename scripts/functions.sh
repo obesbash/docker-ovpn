@@ -2,7 +2,7 @@
 
 function datef() {
     # Output:
-    # Sat Jun  8 20:29:08 2019
+    # WeekDay Month  Date h:m:s Year
     date "+%a %b %-d %T %Y"
 }
 

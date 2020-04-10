@@ -1,15 +1,9 @@
-FROM alpine:3.11.3
+FROM alpine:3.11.5
 
-LABEL maintainer="Alexander Litvinenko <array.shift@yahoo.com>"
-
-ENV APP_NAME Dockovpn
-ENV APP_INSTALL_PATH /opt/${APP_NAME}
-
-WORKDIR ${APP_INSTALL_PATH}
+WORKDIR /opt/dockerovpn
 
 COPY scripts .
 COPY config ./config
-COPY VERSION ./config
 
 RUN apk add --no-cache openvpn easy-rsa bash netcat-openbsd zip dumb-init && \
     /usr/share/easy-rsa/easyrsa init-pki && \

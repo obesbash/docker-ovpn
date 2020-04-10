@@ -19,14 +19,14 @@ iptables -A FORWARD -i tun0 -j ACCEPT
 iptables -A OUTPUT -o tun0 -j ACCEPT
 
 # Allow forwarding traffic only from the VPN.
-iptables -A FORWARD -i tun0 -o eth0 -s 10.8.0.0/24 -j ACCEPT
+iptables -A FORWARD -i tun0 -o eth0 -s 10.56.33.0/24 -j ACCEPT
 iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.56.33.0/24 -o eth0 -j MASQUERADE
 
 LOCKFILE=/etc/openvpn/.gen
 
-# Regenerate certs only on the first start 
+# Regenerate certs only on the first start
 if [ ! -f $LOCKFILE ]; then
 
 /usr/share/easy-rsa/easyrsa build-ca nopass << EOF
@@ -58,7 +58,7 @@ EOF4
 fi
 
 # Print app version
-$APP_INSTALL_PATH/version.sh
+#/opt/dockerovpn/version.sh
 
 # Need to feed key password
 openvpn --config /etc/openvpn/server.conf &
