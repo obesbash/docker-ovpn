@@ -6,7 +6,7 @@
       cap_add:
        - NET_ADMIN
       environment:
-       - HOST_ADDR=ovpn.strunko.ru
+       - HOST_ADDR=<your ip or domain name>
       ports:
        - 1194:1194/udp
        - 80:8080/tcp
