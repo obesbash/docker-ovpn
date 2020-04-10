@@ -2,8 +2,8 @@ FROM alpine:3.11.5
 
 WORKDIR /opt/dockerovpn
 
-COPY scripts .
-COPY config ./config
+COPY ./scripts .
+COPY ./config ./config
 
 RUN apk add --no-cache openvpn easy-rsa bash netcat-openbsd zip dumb-init && \
     /usr/share/easy-rsa/easyrsa init-pki && \

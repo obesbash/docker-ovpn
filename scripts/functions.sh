@@ -26,7 +26,7 @@ function createConfig() {
         HOST_ADDR='localhost'
     fi
 
-    cd $APP_INSTALL_PATH
+    cd /opt/dockerovpn
     cp config/client.ovpn $CLIENT_PATH
 
     echo -e "\nremote $HOST_ADDR 1194" >> "$CLIENT_PATH/client.ovpn"

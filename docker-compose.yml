@@ -6,7 +6,7 @@
       cap_add:
        - NET_ADMIN
       environment:
-       - HOST_ADDR=<your ip or domain name>
+       - HOST_ADDR=<>
       ports:
        - 1194:1194/udp
        - 80:8080/tcp
