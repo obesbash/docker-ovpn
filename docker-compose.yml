@@ -1,0 +1,12 @@
+  version: '3.3'
+
+  services:
+    ovpn:
+      image: obesbash/docker-ovpn:latest
+      cap_add:
+       - NET_ADMIN
+      environment:
+       - HOST_ADDR=ovpn.strunko.ru
+      ports:
+       - 1194:1194/udp
+       - 80:8080/tcp
