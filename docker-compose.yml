@@ -5,6 +5,8 @@
       image: obesbash/docker-ovpn:latest
       cap_add:
        - NET_ADMIN
+      sysctl:
+       - net.ipv4.ip_forward=1
       environment:
        - HOST_ADDR=<>
       ports:
