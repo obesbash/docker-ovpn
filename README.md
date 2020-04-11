@@ -27,3 +27,5 @@ NOTE: After you download you client config, http server will be shut down!
 In your browser go to http://ovpn_ip_or_domain_name:8099/ and get your client.ovpn file(What to do with client.ovpn i think you know). After file will bee downloaded http server shut down. And in logs you will see:
 
 `Config http server has been shut down`
+
+Thats all, enjoy your OVPN server.
