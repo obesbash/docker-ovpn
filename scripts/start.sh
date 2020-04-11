@@ -24,9 +24,9 @@ iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 iptables -t nat -A POSTROUTING -s 10.56.33.0/24 -o eth0 -j MASQUERADE
 
-LOCKFILE=/etc/openvpn/.gen
+LOCKFILE=/etc/openvpn/ca.crt
 
-# Regenerate certs only on the first start
+# Generate certs only on the first start
 if [ ! -f $LOCKFILE ]; then
 
 /usr/share/easy-rsa/easyrsa build-ca nopass << EOF
