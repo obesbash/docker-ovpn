@@ -1,8 +1,7 @@
 #!/bin/bash
 
 function datef() {
-    # Output:
-    # WeekDay Month  Date h:m:s Year
+    # Output Date:
     date "+%a %b %-d %T %Y"
 }
 
@@ -25,7 +24,7 @@ function createConfig() {
 
     echo -e "\nremote $HOST_ADDR 1194" >> "$CLIENT_PATH/client.ovpn"
 
-# Embed client authentication files into config file
+# Writing authentication info into client.ovpn
     cat <(echo -e '<ca>') \
         "$CLIENT_PATH/ca.crt" <(echo -e '</ca>\n<cert>') \
         "$CLIENT_PATH/$CLIENT_ID.crt" <(echo -e '</cert>\n<key>') \
