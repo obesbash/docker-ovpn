@@ -13,6 +13,6 @@ services:
       - 1194:1194/udp
       - 8099:8080/tcp
   volumes:
-      - ovpn:/etc/ovpn
+      - ovpn:/etc/openvpn
 volumes:
   ovpn:
