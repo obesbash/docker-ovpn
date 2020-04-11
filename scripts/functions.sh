@@ -24,4 +24,14 @@ function createConfig() {
     cp config/client.ovpn $CLIENT_PATH
 
     echo -e "\nremote $HOST_ADDR 1194" >> "$CLIENT_PATH/client.ovpn"
+
+# Embed client authentication files into config file
+    cat <(echo -e '<ca>') \
+        "$CLIENT_PATH/ca.crt" <(echo -e '</ca>\n<cert>') \
+        "$CLIENT_PATH/$CLIENT_ID.crt" <(echo -e '</cert>\n<key>') \
+        "$CLIENT_PATH/$CLIENT_ID.key" <(echo -e '</key>\n<tls-auth>') \
+        "$CLIENT_PATH/ta.key" <(echo -e '</tls-auth>') \
+        >> "$CLIENT_PATH/client.ovpn"
+
+    echo $CLIENT_PATH
 }
