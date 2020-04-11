@@ -2,7 +2,7 @@
 Fork this project from <a href="https://github.com/alekslitvinenk/docker-openvpn">alekslitvinenk</a>. Many thanks to him!
 
 I made this project for personal use and personal purposes. 
-Added a Docker-Compose file and slightly modified the source code, since I did not need part of the rest functionality. 
+Added a Docker-Compose file and slightly modified the source code, since I did not need part of the original functionality. 
 Left only what I need personally.
 
 So if you want to use fully automated/often_upgraded solution go into original alekslitvinenk project(linked above) and folow him instruction. 
