@@ -1,8 +1,7 @@
 #!/bin/bash
 
 function datef() {
-    # Output:
-    # WeekDay Month  Date h:m:s Year
+    # Output Date:
     date "+%a %b %-d %T %Y"
 }
 
@@ -20,18 +19,12 @@ function createConfig() {
 
     cp "pki/private/$CLIENT_ID.key" "pki/issued/$CLIENT_ID.crt" pki/ca.crt /etc/openvpn/ta.key $CLIENT_PATH
 
-    # Set default value to HOST_ADDR if it was not set from environment
-    if [ -z "$HOST_ADDR" ]
-    then
-        HOST_ADDR='localhost'
-    fi
-
     cd /opt/dockerovpn
     cp config/client.ovpn $CLIENT_PATH
 
     echo -e "\nremote $HOST_ADDR 1194" >> "$CLIENT_PATH/client.ovpn"
 
-    # Embed client authentication files into config file
+# Writing authentication info into client.ovpn
     cat <(echo -e '<ca>') \
         "$CLIENT_PATH/ca.crt" <(echo -e '</ca>\n<cert>') \
         "$CLIENT_PATH/$CLIENT_ID.crt" <(echo -e '</cert>\n<key>') \
@@ -40,24 +33,4 @@ function createConfig() {
         >> "$CLIENT_PATH/client.ovpn"
 
     echo $CLIENT_PATH
-}
-
-function zipFiles() {
-    CLIENT_PATH="$1"
-    # -q to silence zip output
-    # -j junk directories
-    zip -q -j "$CLIENT_PATH/client.zip" "$CLIENT_PATH/client.ovpn"
-
-    echo "$(datef) $CLIENT_PATH/client.zip file has been generated"
-}
-
-function zipFilesWithPassword() {
-    CLIENT_PATH="$1"
-    ZIP_PASSWORD="$2"
-    # -q to silence zip output
-    # -j junk directories
-    # -P pswd use standard encryption, password is pswd
-    zip -q -j -P "$ZIP_PASSWORD" "$CLIENT_PATH/client.zip" "$CLIENT_PATH/client.ovpn"
-
-    echo "$(datef) $CLIENT_PATH/client.zip with password protection has been generated"
 }
