@@ -22,7 +22,7 @@ Next run `docker logs ovpn`(if you chose use docker run) or `docker-compose logs
 Initialization Sequence Completed
 clients/k1Gkgk573pJQMXyDtQz9uSbMOPy15rEI/client.ovpn file has been generated
 Config server started, download your client.ovpn config at http://ovpn_ip_or_domain_name:8099/
-NOTE: After you download you client config, http server will be shut down!
+NOTE: After your download you client config, http server will be shut down!
 ```
 In your browser go to http://ovpn_ip_or_domain_name:8099/ and get your client.ovpn file(What to do with client.ovpn i think you know). After file will bee downloaded http server shut down. And in logs you will see:
 
