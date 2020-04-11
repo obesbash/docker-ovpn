@@ -3,6 +3,7 @@ version: '3.3'
 services:
   ovpn:
     image: obesbash/docker-ovpn:latest
+    restart: always
     cap_add:
        - NET_ADMIN
     sysctls:
@@ -12,7 +13,7 @@ services:
     ports:
       - 1194:1194/udp
       - 8099:8080/tcp
-  volumes:
+    volumes:
       - data:/etc/openvpn
 volumes:
   data:
