@@ -8,44 +8,6 @@ FILE_NAME=client.ovpn
 FILE_PATH="$CLIENT_PATH/$FILE_NAME"
 echo "$(datef) $FILE_PATH file has been generated"
 
-if (($#))
-then
-
-    # Parse string into chars:
-    # z    Zip user config
-    # p    User password for the zip archive
-    FLAGS=$1
-
-    # Switch statement
-    case $FLAGS in
-        z)
-            zipFiles "$CLIENT_PATH"
-
-            CONTENT_TYPE=application/zip
-            FILE_NAME=client.zip
-            FILE_PATH="$CLIENT_PATH/$FILE_NAME"
-            ;;
-        zp)
-            # (()) engaes arthimetic context
-            if (($# < 2))
-            then
-                echo "$(datef) Not enogh arguments" && exit 0
-            else
-                zipFilesWithPassword "$CLIENT_PATH" "$2"
-
-                CONTENT_TYPE=application/zip
-                FILE_NAME=client.zip
-                FILE_PATH="$CLIENT_PATH/$FILE_NAME"
-            fi
-            ;;
-
-        *) echo "$(datef) Unknown parameters $FLAGS"
-            ;;
-
-    esac
-fi
-
-
 echo "$(datef) Config server started, download your $FILE_NAME config at http://$HOST_ADDR/"
 echo "$(datef) NOTE: After you download you client config, http server will be shut down!"
 
